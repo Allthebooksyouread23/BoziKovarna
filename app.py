@@ -44,7 +44,7 @@ def calculate_ratio(target_hex):
     return res.x
 
 # --- UI PRVKY ---
-target_color = st.color_picker("Zvol cílovou barvu", "#FFFFFF")
+target_color = st.color_picker("Zvol cílovou barvu", "#0069B2")
 
 if target_color:
     w = calculate_ratio(target_color)
