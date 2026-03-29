@@ -2,10 +2,8 @@ import streamlit as st
 import numpy as np
 from scipy.optimize import minimize
 
-# --- NASTAVENÍ STRÁNKY ---
 st.set_page_config(page_title="Boží Kovárna")
 
-# Styl pro černé pozadí a lepší vzhled (Streamlit má tmavý režim v základu, ale můžeme ho vynutit)
 st.markdown("""
     <style>
     .stApp { background-color: #000000; color: white; }
@@ -15,7 +13,6 @@ st.markdown("""
 st.title("Boží Kovárna")
 st.write("Vyber barvu a zjisti poměr BožíchKovů k namíchání lektvaru")
 
-# --- LOGIKA VÝPOČTU ---
 LIQUIDS = {
     "Modrá": np.array([0, 105, 178]) / 255.0,   # #0069B2
     "Zelená": np.array([6, 135, 25]) / 255.0,  # #068719
@@ -43,13 +40,12 @@ def calculate_ratio(target_hex):
     res = minimize(objective, [0.33, 0.33, 0.33], bounds=[(0, 1)]*3, constraints={'type': 'eq', 'fun': lambda w: np.sum(w)-1})
     return res.x
 
-# --- UI PRVKY ---
+# --- UI ---
 target_color = st.color_picker("Zvol cílovou barvu", "#0069B2")
 
 if target_color:
     w = calculate_ratio(target_color)
     
-    # Výpočet poměru a:b:c
     valid_weights = w[w > 0.01]
     base = min(valid_weights) if len(valid_weights) > 0 else 1
     ratio = [round(val / base, 2) for val in w]
