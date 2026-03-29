@@ -17,9 +17,9 @@ st.write("Vyber barvu a zjisti poměr")
 
 # --- LOGIKA VÝPOČTU ---
 LIQUIDS = {
-    "Modrá": np.array([128, 238, 246]) / 255.0,
-    "Zelená": np.array([7, 139, 25]) / 255.0,
-    "Griotka": np.array([121, 29, 28]) / 255.0
+    "Modrá": np.array([0, 105, 178]) / 255.0,   # #0069B2
+    "Zelená": np.array([6, 135, 25]) / 255.0,  # #068719
+    "Griotka": np.array([137, 47, 48]) / 255.0    # #892F30
 }
 
 def rgb_to_cmyk(rgb):
