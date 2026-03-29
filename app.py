@@ -13,7 +13,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 st.title("Boží Kovárna")
-st.write("Vyber barvu a zjisti poměr")
+st.write("Vyber barvu a zjisti poměr boží tekutiny k namíchání lektvaru")
 
 # --- LOGIKA VÝPOČTU ---
 LIQUIDS = {
@@ -44,7 +44,7 @@ def calculate_ratio(target_hex):
     return res.x
 
 # --- UI PRVKY ---
-target_color = st.color_picker("Zvol cílovou barvu", "#0069B2")
+target_color = st.color_picker("#0069B2")
 
 if target_color:
     w = calculate_ratio(target_color)
