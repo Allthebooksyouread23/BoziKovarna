@@ -49,9 +49,13 @@ target_color = st.color_picker("Zvol cílovou barvu", "#0069B2")
 if target_color:
     w = calculate_ratio(target_color)
     
-    valid_weights = w[w > 0.01]
-    base = min(valid_weights) if len(valid_weights) > 0 else 1
-    ratio = [round(val / base, 2) for val in w]
+    # Výpočet poměru tak, aby největší složka byla 1
+    max_w = max(w)
+    if max_w > 0:
+        # Vydělíme všechny hodnoty tou největší
+        ratio = [round(val / max_w, 2) for val in w]
+    else:
+        ratio = [0, 0, 0]
 
     st.divider()
     st.subheader("Potřebný poměr (a : b : c)")
