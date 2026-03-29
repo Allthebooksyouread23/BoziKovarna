@@ -7,6 +7,9 @@ st.set_page_config(page_title="Boží Kovárna")
 st.markdown("""
     <style>
     .stApp { background-color: #000000; color: white; }
+    html, body, [class*="css"]  {
+        font-family: 'Courier New', Courier, monospace;
+    }
     </style>
     """, unsafe_allow_html=True)
 
