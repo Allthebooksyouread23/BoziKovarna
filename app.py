@@ -3,7 +3,7 @@ import numpy as np
 from scipy.optimize import minimize
 
 # --- NASTAVENÍ STRÁNKY ---
-st.set_page_config(page_title="Mixér barev", page_icon="🧪")
+st.set_page_config(page_title="Boží Kovárna")
 
 # Styl pro černé pozadí a lepší vzhled (Streamlit má tmavý režim v základu, ale můžeme ho vynutit)
 st.markdown("""
@@ -12,14 +12,14 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🧪 Laboratoř míchání barev")
-st.write("Vyber barvu a zjisti poměr svých 3 kapalin.")
+st.title("Boží Kovárna")
+st.write("Vyber barvu a zjisti poměr")
 
 # --- LOGIKA VÝPOČTU ---
 LIQUIDS = {
-    "Cyan": np.array([128, 238, 246]) / 255.0,
-    "Green": np.array([7, 139, 25]) / 255.0,
-    "Red": np.array([121, 29, 28]) / 255.0
+    "Modrá": np.array([128, 238, 246]) / 255.0,
+    "Zelená": np.array([7, 139, 25]) / 255.0,
+    "Griotka": np.array([121, 29, 28]) / 255.0
 }
 
 def rgb_to_cmyk(rgb):
@@ -58,8 +58,8 @@ if target_color:
     st.subheader("Potřebný poměr (a : b : c)")
     
     col1, col2, col3 = st.columns(3)
-    col1.metric("💧 Cyan", f"{ratio[0]}")
-    col2.metric("🌿 Green", f"{ratio[1]}")
-    col3.metric("🍷 Red", f"{ratio[2]}")
+    col1.metric("Modrá", f"{ratio[0]}")
+    col2.metric("Zelená", f"{ratio[1]}")
+    col3.metric("Griotka", f"{ratio[2]}")
 
-    st.info(f"Procentuálně: {w[0]*100:.1f}% Cyan | {w[1]*100:.1f}% Green | {w[2]*100:.1f}% Red")
+    st.info(f"Procentuálně: {w[0]*100:.1f}% Modrá | {w[1]*100:.1f}% Zelená | {w[2]*100:.1f}% Griotka")
